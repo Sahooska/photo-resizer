@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Govt Exam Photo & Signature Resizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Clean Header -->
+    <header class="app-header">
+      <div>
+        <h1>Exam Photo & Signature Resizer</h1>
+        <p>FOR ssc, Banking, UPSC, Railway exams online image compressor</p>
+      </div>
+      
+    </header>
+
+    <div class="main-layout">
+      
+      <!-- Left Side: Upload & Preview -->
+      <div class="preview-section">
+        <div class="upload-card" id="dropArea" data-hover>
+          <input type="file" id="fileInput" accept="image/jpeg, image/png, image/jpg" hidden>
+          
+          <div id="uploadPrompt" class="upload-prompt">
+            <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+            </svg>
+            <h3>Photo ya Signature Chunein</h3>
+            <p>Click karein ya file ko yahan drag karein</p>
+            <span class="file-hint">JPG ya PNG format</span>
+          </div>
+
+          <div id="imageWrapper" class="image-wrapper" style="display: none;">
+            <img id="previewImg" alt="Preview Image">
+          </div>
+        </div>
+
+        <!-- File Details Card -->
+        <div class="file-info-card" id="fileInfoCard" style="display: none;">
+          <div class="info-item">
+            <span>Original Size:</span>
+            <strong id="origSize">0 KB</strong>
+          </div>
+          <div class="info-item">
+            <span>Dimensions:</span>
+            <strong id="origDim">0 x 0 px</strong>
+          </div>
+          <div class="info-item highlight">
+            <span>Output Size:</span>
+            <strong id="outputSize">Ready</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Clean Control Form -->
+      <div class="controls-section">
+        
+        <!-- Preset Dropdown -->
+        <div class="form-group">
+          <label>Exam Preset (Direct Setting):</label>
+          <select id="presetSelect" class="form-control" data-hover>
+            <option value="custom">Custom (more hisabe adjust heba)</option>
+            <option value="ssc_photo">SSC CGL/CHSL/MTS Photo (20-50 KB | 200x230 px)</option>
+            <option value="ssc_sign">SSC Signature (10-20 KB | 140x60 px)</option>
+            <option value="ibps_photo">IBPS / SBI Bank Photo (20-50 KB | 200x230 px)</option>
+            <option value="ibps_sign">IBPS / SBI Bank Signature (10-20 KB | 140x60 px)</option>
+            <option value="upsc_photo">UPSC Photo (20-100 KB | 350x350 px)</option>
+          </select>
+        </div>
+
+        <!-- Dimension Inputs -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Width (Pixels):</label>
+            <input type="number" id="imgWidth" class="form-control" placeholder="200" data-hover>
+          </div>
+          <div class="form-group">
+            <label>Height (Pixels):</label>
+            <input type="number" id="imgHeight" class="form-control" placeholder="230" data-hover>
+          </div>
+        </div>
+
+        <!-- Ratio & Target KB -->
+        <div class="form-row align-center">
+          <div class="form-group">
+            <label>Max Size Limit (KB):</label>
+            <input type="number" id="targetKB" class="form-control" value="50" placeholder="50" data-hover>
+          </div>
+          <div class="checkbox-wrapper">
+            <label class="checkbox-label" data-hover>
+              <input type="checkbox" id="aspectRatio" checked>
+              <span>Maintain Aspect Ratio</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Useful Image Fixes -->
+        <div class="tools-box">
+          <span class="tools-title">Image Adjustments</span>
+          
+          <div class="sliders-row">
+            <div class="slider-group">
+              <label>Brightness: <span id="brightVal">100%</span></label>
+              <input type="range" id="brightness" min="60" max="150" value="100">
+            </div>
+            <div class="slider-group">
+              <label>Contrast: <span id="contrastVal">100%</span></label>
+              <input type="range" id="contrast" min="60" max="160" value="100">
+            </div>
+          </div>
+
+          <div class="quick-btns">
+            <button id="cleanSignBtn" class="pill-btn" data-hover>Clean Signature (Pure White Paper)</button>
+            <button id="rotateBtn" class="pill-btn" data-hover>Rotate 90°</button>
+            <button id="resetAdjustBtn" class="pill-btn text-btn" data-hover>Reset</button>
+          </div>
+        </div>
+
+        <!-- Final Buttons -->
+        <div class="action-buttons">
+          <button id="processBtn" class="btn btn-primary" data-hover>
+            Compress &amp; Resize
+          </button>
+          <button id="downloadBtn" class="btn btn-success" disabled data-hover>
+            Download JPEG Photo
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
